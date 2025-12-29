@@ -12,11 +12,13 @@ const commBot = buildCommunityBot();
 
 // Webhook endpoints (Telegram will POST updates here)
 app.post('/webhook/ads', (req, res) => {
+  console.log('ADS UPDATE RECEIVED', JSON.stringify(req.body));
   adsBot.handleUpdate(req.body);
   res.sendStatus(200);
 });
 
 app.post('/webhook/community', (req, res) => {
+  console.log('COMM UPDATE RECEIVED', JSON.stringify(req.body));
   commBot.handleUpdate(req.body);
   res.sendStatus(200);
 });
